@@ -1,0 +1,257 @@
+/* Algemene stijlen */
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+}
+
+/* Titel sectie */
+.title {
+  background-color: #333;
+  color: white;
+  padding: 20px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.title h1 {
+  margin: 0;
+  font-size: 2em;
+}
+
+.title h3 {
+  margin: 5px 0 0;
+  font-weight: normal;
+  font-size: 1.2em;
+}
+
+/* Scherm sectie */
+.screen {
+  background-color: white;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  width: 70%;
+  margin: 20px auto;
+  padding: 20px;
+}
+
+/* Tijdweergave */
+.screen h1 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+}
+
+/* Container voor de sectoren en sluisdeuren */
+.sluis-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+/* Sectoren */
+.sector {
+  width: 150px;
+  height: 150px; /* Maak de sectie groter zodat het waterniveau goed zichtbaar is */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2em;
+  color: white;
+  border-radius: 5px;
+  background-color: rgb(120, 120, 120);
+  font-weight: bold;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden; /* Zorg ervoor dat het waterniveau niet uit de sectie overflowt */
+}
+
+/* Water niveau (water-level) */
+.water-level {
+  width: 100%;
+  background-color: #1E90FF; /* Blauwe waterkleur */
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  border-radius: 0; /* Geen afgeronde hoeken */
+  height: 0; /* Wordt door JS aangepast */
+  overflow: hidden;
+}
+
+/* Subtiel golf effect */
+.water-level::after {
+  content: "";
+  position: absolute;
+  top: -5px; /* Iets boven de waterlijn */
+  left: 0;
+  width: 100%;
+  height: 15px;
+  background: linear-gradient(to right, 
+    rgba(255, 255, 255, 0.5) 20%, 
+    rgba(30, 144, 255, 1) 50%, 
+    rgba(255, 255, 255, 0.5) 80%
+  );
+  opacity: 0.4; /* Zorgt voor een subtiel effect */
+  border-radius: 50%;
+  filter: blur(2px);
+}
+
+/* Water stand tekst */
+.water-text {
+  position: absolute;
+  top: 10px; /* Plaats de tekst boven de waterdiv */
+  left: 50%; /* Centreer de tekst horizontaal */
+  transform: translateX(-50%); /* Exact centreren */
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #ffffff; /* Kleur van de tekst */
+  z-index: 2; /* Zorg ervoor dat de tekst boven het water staat */
+}
+
+/* Sluis met deur en knoppen */
+.sluis {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+/* Sluisdeuren */
+.sluisdeur {
+  width: 20px;
+  height: 100px;
+  background-color: black;
+  border-radius: 3px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.4);
+  transition: opacity 0.5s ease; /* Fade effect bij opening/sluiting */
+}
+
+/* Geopende sluisdeur */
+.opened {
+  opacity: 0.5; /* De deur wordt halfdoorzichtig als deze open is */
+}
+
+/* Gesloten sluisdeur */
+.closed {
+  opacity: 1; /* De deur is volledig ondoorzichtig als deze gesloten is */
+}
+
+/* Knoppen onder de sluisdeuren */
+.knoppen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 5px;
+}
+
+button {
+  width: 90px;
+  padding: 8px;
+  margin: 4px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.9em;
+  font-weight: bold;
+  transition: 0.3s;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+.levelen {
+  background-color: rgb(155, 155, 155);
+  color: white;
+}
+
+.openen {
+  background-color: green;
+  color: white;
+}
+
+.sluiten {
+  background-color: red;
+  color: white;
+}
+
+button:hover {
+  opacity: 0.8;
+  transform: translateY(-2px);
+  box-shadow: 0px 5px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Stoplicht container */
+.stoplicht {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 5px;
+}
+
+/* Stoplicht cirkels */
+.licht {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Rode licht */
+.rood {
+  background-color: red;
+}
+
+/* Groene licht */
+.groen {
+  background-color: green;
+}
+
+/* Logs container */
+.logs-container {
+  width: 70%;
+  margin: 20px auto;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.logs-container h2 {
+  font-size: 1.8em;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+/* Logs styling */
+.logs {
+  height: 400px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px;
+  font-family: monospace;
+  color: #333;
+  overflow-y: auto;
+  white-space: pre-wrap;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.logs p {
+  margin: 5px 0;
+  font-size: 1em;
+}
+
+/* Responsive aanpassingen */
+@media screen and (max-width: 768px) {
+  .screen {
+    width: 90%;
+  }
+
+  .logs-container {
+    width: 90%;
+  }
+
+  .logs {
+    height: 150px;
+  }
+}
