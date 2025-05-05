@@ -5,6 +5,11 @@ body {
   background-color: #f4f4f4;
   margin: 0;
   padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* Zorg ervoor dat de body minimaal de hoogte van het scherm heeft */
+  flex-direction: column;
 }
 
 /* Titel sectie */
@@ -13,6 +18,7 @@ body {
   color: white;
   padding: 20px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+  width: 100%;
 }
 
 .title h1 {
@@ -34,25 +40,31 @@ body {
   width: 70%;
   margin: 20px auto;
   padding: 20px;
+  max-width: 1200px;  /* Maximaliseer de breedte op grotere schermen */
 }
 
 /* Tijdweergave */
 .screen h1 {
   font-size: 2.5em;
   margin-bottom: 20px;
+  color: black; /* Maak de klok zwart */
 }
 
 /* Container voor de sectoren en sluisdeuren */
 .sluis-container {
   display: flex;
-  justify-content: center;
+  justify-content: space-between; /* Verdeelt de sectoren gelijkmatig over de breedte */
   align-items: flex-start;
+  flex-wrap: nowrap; /* Zorg ervoor dat de sectoren niet omvouwen */
   gap: 10px;
+  width: 100%;
 }
 
 /* Sectoren */
 .sector {
-  width: 150px;
+  flex: 1; /* Zorg ervoor dat de secties zich gelijkmatig verspreiden */
+  min-width: 120px; /* Minimaliseer de breedte van de secties */
+  max-width: 150px; /* Zorg ervoor dat ze niet te breed worden */
   height: 150px; /* Maak de sectie groter zodat het waterniveau goed zichtbaar is */
   display: flex;
   justify-content: center;
@@ -65,6 +77,7 @@ body {
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
   position: relative;
   overflow: hidden; /* Zorg ervoor dat het waterniveau niet uit de sectie overflowt */
+  margin-bottom: 10px; /* Ruimte onder de sectoren */
 }
 
 /* Water niveau (water-level) */
@@ -214,6 +227,7 @@ button:hover {
   padding: 15px;
   border-radius: 10px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  max-width: 1200px;
 }
 
 .logs-container h2 {
@@ -253,5 +267,19 @@ button:hover {
 
   .logs {
     height: 150px;
+  }
+
+  .sluis-container {
+    flex-direction: column; /* Zet de secties onder elkaar op kleine schermen */
+    align-items: center;
+  }
+
+  .sector {
+    width: 120px; /* Kleinere secties op kleinere schermen */
+    height: 120px;
+  }
+
+  .water-text {
+    font-size: 1em;
   }
 }
