@@ -68,7 +68,9 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'LiveCommunication.wsgi.application'
+# WSGI_APPLICATION = 'LiveCommunication.wsgi.application'
+ASGI_APPLICATION = 'LiveCommunication.asgi.application'
+
 
 
 # Database

@@ -1,0 +1,44 @@
+/* Verwijder alle oude settings en toggle styling */
+/* Behoud alleen de basis styling voor de control panel */
+
+.control-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: #f5f5f5;
+}
+
+.dark-mode .control-header {
+  background-color: #1a1a1a;
+}
+
+.back-button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  background-color: #e0e0e0;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.dark-mode .back-button {
+  background-color: #333;
+  color: white;
+}
+
+.theme-toggle {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  background-color: #e0e0e0;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.dark-mode .theme-toggle {
+  background-color: #333;
+  color: white;
+}
+
+/* Rest van je bestaande CSS behouden */ 

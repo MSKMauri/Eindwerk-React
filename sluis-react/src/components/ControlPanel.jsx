@@ -1,16 +1,36 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import WaterSector from './WaterSector';
 import SluisDeur from './SluisDeur';
 import Stoplichten from './Stoplichten';
 
+// Simpele boolean om te wisselen tussen WebSocket en dummy data
+const USE_WEBSOCKET = true; // Zet op true voor WebSocket data, false voor dummy data
+
 const ControlPanel = () => {
   const navigate = useNavigate();
+  const ws = useRef(null);
+  const [useWebSocket, setUseWebSocket] = useState(false);
+  const [isSettingsOpen, setIsSettingsOpen] = useState(false);
+  const settingsRef = useRef(null);
+  
   const getInitialTheme = () => {
     const stored = localStorage.getItem('theme');
     return stored ? stored === 'dark' : true;
   };
   const [isDarkMode, setIsDarkMode] = useState(getInitialTheme);
+
+  // Sluit settings menu als er buiten wordt geklikt
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (settingsRef.current && !settingsRef.current.contains(event.target)) {
+        setIsSettingsOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   useEffect(() => {
     if (isDarkMode) {
@@ -44,8 +64,44 @@ const ControlPanel = () => {
     return () => clearInterval(interval);
   }, []);
 
+  // WebSocket effect
   useEffect(() => {
-    if (true) {
+    if (USE_WEBSOCKET) {
+      ws.current = new WebSocket('ws://localhost:8000/ws/ac/');
+      
+      ws.current.onopen = () => {
+        addLog('WebSocket verbinding geopend');
+      };
+
+      ws.current.onmessage = (event) => {
+        const data = JSON.parse(event.data);
+        setWaterLevels({
+          Sensor1: data.Sensor1,
+          Sensor2: data.Sensor2,
+          Sensor3: data.Sensor3,
+        });
+        addLog(`WebSocket data ontvangen: Sensor1=${data.Sensor1}, Sensor2=${data.Sensor2}, Sensor3=${data.Sensor3}`);
+      };
+
+      ws.current.onerror = (error) => {
+        addLog('WebSocket error: ' + error.message);
+      };
+
+      ws.current.onclose = () => {
+        addLog('WebSocket verbinding gesloten');
+      };
+
+      return () => {
+        if (ws.current) {
+          ws.current.close();
+        }
+      };
+    }
+  }, []);
+
+  // Dummy data effect
+  useEffect(() => {
+    if (!USE_WEBSOCKET) {
       const dummyInterval = setInterval(() => {
         const base = Math.floor(Math.random() * 6) + 3;
         const variation = Math.floor(Math.random() * 3) - 1;
@@ -75,6 +131,15 @@ const ControlPanel = () => {
       localStorage.setItem('theme', !prev ? 'dark' : 'light');
       return !prev;
     });
+  };
+
+  const toggleSettings = () => {
+    setIsSettingsOpen(!isSettingsOpen);
+  };
+
+  const toggleDataSource = () => {
+    setUseWebSocket(prev => !prev);
+    addLog(`Gewisseld naar ${!useWebSocket ? 'WebSocket' : 'dummy'} data`);
   };
 
   const handleDeurActie = (deurNummer, actie) => {
