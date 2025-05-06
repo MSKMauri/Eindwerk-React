@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import "./style.css";
+// import "./style.css";
+import "./styled.css";
 import WaterSector from "./components/WaterSector";
 import SluisDeur from "./components/SluisDeur";
 import Stoplichten from "./components/Stoplichten";
-
 
 export default function App() {
   const useDummyData = true;
@@ -40,7 +40,9 @@ export default function App() {
           Sensor3: base - variation,
         };
         setWaterLevels(dummyData);
-        addLog(`Dummy data: Sensor1=${dummyData.Sensor1}, Sensor2=${dummyData.Sensor2}, Sensor3=${dummyData.Sensor3}`);
+        addLog(
+          `Dummy data: Sensor1=${dummyData.Sensor1}, Sensor2=${dummyData.Sensor2}, Sensor3=${dummyData.Sensor3}`
+        );
       }, 1000);
       return () => clearInterval(dummyInterval);
     }
@@ -60,12 +62,29 @@ export default function App() {
           <WaterSector level={waterLevels.Sensor1} sectorClass="sector1" />
           <div className="sluis">
             <Stoplichten isOpen={deur1Open} />
-            <div className="sluisdeur" style={{ opacity: deur1Open ? 0.3 : 1 }}></div>
+            <div
+              className="sluisdeur"
+              style={{ opacity: deur1Open ? 0.3 : 1 }}
+            ></div>
             <div className="knoppen">
-              <button className="openen" onClick={() => { setDeur1Open(true); addLog("Sluisdeur 1 geopend"); }} disabled={deur1Open}>
+              <button
+                className="openen"
+                onClick={() => {
+                  setDeur1Open(true);
+                  addLog("Sluisdeur 1 geopend");
+                }}
+                disabled={deur1Open}
+              >
                 Openen
               </button>
-              <button className="sluiten" onClick={() => { setDeur1Open(false); addLog("Sluisdeur 1 gesloten"); }} disabled={!deur1Open}>
+              <button
+                className="sluiten"
+                onClick={() => {
+                  setDeur1Open(false);
+                  addLog("Sluisdeur 1 gesloten");
+                }}
+                disabled={!deur1Open}
+              >
                 Sluiten
               </button>
             </div>
@@ -73,12 +92,29 @@ export default function App() {
           <WaterSector level={waterLevels.Sensor2} sectorClass="sector2" />
           <div className="sluis">
             <Stoplichten isOpen={deur2Open} />
-            <div className="sluisdeur" style={{ opacity: deur2Open ? 0.3 : 1 }}></div>
+            <div
+              className="sluisdeur"
+              style={{ opacity: deur2Open ? 0.3 : 1 }}
+            ></div>
             <div className="knoppen">
-              <button className="openen" onClick={() => { setDeur2Open(true); addLog("Sluisdeur 2 geopend"); }} disabled={deur2Open}>
+              <button
+                className="openen"
+                onClick={() => {
+                  setDeur2Open(true);
+                  addLog("Sluisdeur 2 geopend");
+                }}
+                disabled={deur2Open}
+              >
                 Openen
               </button>
-              <button className="sluiten" onClick={() => { setDeur2Open(false); addLog("Sluisdeur 2 gesloten"); }} disabled={!deur2Open}>
+              <button
+                className="sluiten"
+                onClick={() => {
+                  setDeur2Open(false);
+                  addLog("Sluisdeur 2 gesloten");
+                }}
+                disabled={!deur2Open}
+              >
                 Sluiten
               </button>
             </div>

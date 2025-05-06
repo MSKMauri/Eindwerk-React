@@ -1,12 +1,13 @@
 /* Algemene stijlen */
 * {
-  box-sizing: border-box; /* Voorkomt overflow door padding/marges */
+  box-sizing: border-box;
 }
 
 body {
   font-family: Arial, sans-serif;
   text-align: center;
-  background-color: #f4f4f4;
+  background-color: #1e1e1e;
+  color: #f0f0f0;
   margin: 0;
   padding: 0;
   display: flex;
@@ -18,10 +19,10 @@ body {
 
 /* Titel sectie */
 .title {
-  background-color: #333;
-  color: white;
+  background-color: #121212;
+  color: #d4d4d4;
   padding: 20px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 4px 8px rgba(255, 255, 255, 0.1);
   width: 100%;
 }
 
@@ -38,11 +39,11 @@ body {
 
 /* Scherm sectie */
 .screen {
-  background-color: white;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  background-color: #2a2a2a;
+  box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.1);
   border-radius: 10px;
   width: 100%;
-  max-width: 1200px; /* Maximale breedte instellen */
+  max-width: 1200px;
   margin: 20px auto;
   padding: 20px;
 }
@@ -51,7 +52,7 @@ body {
 .screen h1 {
   font-size: 2.5em;
   margin-bottom: 20px;
-  color: black;
+  color: #d4d4d4;
 }
 
 /* Container voor de sectoren en sluisdeuren */
@@ -59,7 +60,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  flex-wrap: wrap; /* Laat sectoren doorlopen als ze niet passen */
+  flex-wrap: wrap;
   gap: 10px;
   width: 100%;
 }
@@ -68,17 +69,16 @@ body {
 .sector {
   flex: 1;
   min-width: 120px;
-  /* max-width: 150px; */ /* Optioneel: verwijderen of verhogen */
   height: 150px;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 1.2em;
-  color: white;
+  color: #d4d4d4;
   border-radius: 5px;
-  background-color: rgb(120, 120, 120);
+  background-color: #3c3c3c;
   font-weight: bold;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 4px 6px rgba(255, 255, 255, 0.05);
   position: relative;
   overflow: hidden;
   margin-bottom: 10px;
@@ -87,7 +87,7 @@ body {
 /* Water niveau (water-level) */
 .water-level {
   width: 100%;
-  background-color: #1e90ff;
+  background-color: #0077cc;
   position: absolute;
   bottom: 0;
   left: 0;
@@ -105,9 +105,9 @@ body {
   height: 15px;
   background: linear-gradient(
     to right,
-    rgba(255, 255, 255, 0.5) 20%,
-    rgba(30, 144, 255, 1) 50%,
-    rgba(255, 255, 255, 0.5) 80%
+    rgba(255, 255, 255, 0.4) 20%,
+    rgba(0, 119, 204, 1) 50%,
+    rgba(255, 255, 255, 0.4) 80%
   );
   opacity: 0.4;
   border-radius: 50%;
@@ -122,7 +122,7 @@ body {
   transform: translateX(-50%);
   font-size: 1.2em;
   font-weight: bold;
-  color: #ffffff;
+  color: #d4d4d4;
   z-index: 2;
 }
 
@@ -138,9 +138,9 @@ body {
 .sluisdeur {
   width: 20px;
   height: 100px;
-  background-color: black;
+  background-color: #d4d4d4;
   border-radius: 3px;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.4);
+  box-shadow: 0px 4px 6px rgba(255, 255, 255, 0.1);
   transition: opacity 0.5s ease;
 }
 
@@ -170,28 +170,26 @@ button {
   font-size: 0.9em;
   font-weight: bold;
   transition: 0.3s;
-  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 3px 6px rgba(255, 255, 255, 0.05);
+  color: #d4d4d4;
 }
 
 .levelen {
-  background-color: rgb(155, 155, 155);
-  color: white;
+  background-color: #777;
 }
 
 .openen {
-  background-color: green;
-  color: white;
+  background-color: #28a745;
 }
 
 .sluiten {
-  background-color: red;
-  color: white;
+  background-color: #dc3545;
 }
 
 button:hover {
-  opacity: 0.8;
+  opacity: 0.85;
   transform: translateY(-2px);
-  box-shadow: 0px 5px 8px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 5px 8px rgba(255, 255, 255, 0.1);
 }
 
 /* Stoplicht container */
@@ -207,7 +205,7 @@ button:hover {
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 2px 5px rgba(255, 255, 255, 0.1);
 }
 
 .rood {
@@ -223,31 +221,31 @@ button:hover {
   width: 100%;
   max-width: 1200px;
   margin: 20px auto;
-  background-color: #fff;
-  border: 1px solid #ccc;
+  background-color: #2a2a2a;
+  border: 1px solid #444;
   padding: 15px;
   border-radius: 10px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.05);
 }
 
 .logs-container h2 {
   font-size: 1.8em;
-  color: #333;
+  color: #d4d4d4;
   margin-bottom: 15px;
 }
 
 /* Logs styling */
 .logs {
   height: 400px;
-  background-color: #f9f9f9;
-  border: 1px solid #ddd;
+  background-color: #1e1e1e;
+  border: 1px solid #333;
   border-radius: 8px;
   padding: 10px;
   font-family: monospace;
-  color: #333;
+  color: #dcdcdc;
   overflow-y: auto;
   white-space: pre-wrap;
-  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 2px 6px rgba(255, 255, 255, 0.05);
 }
 
 .logs p {
