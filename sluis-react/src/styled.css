@@ -6,7 +6,7 @@
 }
 
 body {
-  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
   text-align: center;
   margin: 0;
   padding: 0;
@@ -69,6 +69,7 @@ body.light-mode {
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
   border-radius: 16px;
   backdrop-filter: blur(8px);
+  margin-top: 80px;
 }
 
 .dark-mode .screen h1 {
@@ -127,6 +128,7 @@ body.light-mode {
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
   border-radius: 16px;
   backdrop-filter: blur(8px);
+  margin-top: 80px;
 }
 
 .light-mode .screen h1 {
@@ -288,7 +290,7 @@ button {
 }
 
 button::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -396,7 +398,7 @@ button:disabled::before {
 }
 
 .licht::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 50%;
   left: 50%;
@@ -471,7 +473,7 @@ button:disabled::before {
 .logs {
   height: 400px;
   padding: 1rem;
-  font-family: 'Consolas', monospace;
+  font-family: "Consolas", monospace;
   overflow-y: auto;
   white-space: pre-wrap;
   line-height: 1.5;
@@ -505,11 +507,13 @@ button:disabled::before {
     padding: 1rem;
   }
 
-  .control-header, .home-header {
+  .control-header,
+  .home-header {
     height: 45px;
   }
 
-  .back-button, .theme-toggle {
+  .back-button,
+  .theme-toggle {
     padding: 0.4rem 0.8rem;
     font-size: 0.85rem;
     margin-top: -12px;
@@ -659,7 +663,7 @@ button:disabled::before {
 }
 
 .start-button::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
