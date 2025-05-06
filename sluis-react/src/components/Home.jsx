@@ -1,11 +1,33 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
   const navigate = useNavigate();
+  const [isDarkMode, setIsDarkMode] = useState(true);
+
+  useEffect(() => {
+    document.body.classList.add('dark-mode');
+    document.body.classList.remove('light-mode');
+  }, []);
+
+  const toggleTheme = () => {
+    setIsDarkMode(!isDarkMode);
+    if (isDarkMode) {
+      document.body.classList.add('light-mode');
+      document.body.classList.remove('dark-mode');
+    } else {
+      document.body.classList.add('dark-mode');
+      document.body.classList.remove('light-mode');
+    }
+  };
 
   return (
     <div className="home-container">
+      <div className="home-header">
+        <button className="theme-toggle" onClick={toggleTheme}>
+          {isDarkMode ? '☀️ Licht' : '🌙 Donker'}
+        </button>
+      </div>
       <div className="home-content">
         <h1>Sluis Controle Systeem</h1>
         <p className="subtitle">Beheer en monitor uw sluis operaties</p>
