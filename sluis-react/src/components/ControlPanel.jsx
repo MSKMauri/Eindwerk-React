@@ -6,14 +6,21 @@ import Stoplichten from './Stoplichten';
 
 const ControlPanel = () => {
   const navigate = useNavigate();
-  const useDummyData = true;
-  const [isDarkMode, setIsDarkMode] = useState(true);
+  const getInitialTheme = () => {
+    const stored = localStorage.getItem('theme');
+    return stored ? stored === 'dark' : true;
+  };
+  const [isDarkMode, setIsDarkMode] = useState(getInitialTheme);
 
-  // Add initial theme setup
   useEffect(() => {
-    document.body.classList.add('dark-mode');
-    document.body.classList.remove('light-mode');
-  }, []);
+    if (isDarkMode) {
+      document.body.classList.add('dark-mode');
+      document.body.classList.remove('light-mode');
+    } else {
+      document.body.classList.add('light-mode');
+      document.body.classList.remove('dark-mode');
+    }
+  }, [isDarkMode]);
 
   const [waterLevels, setWaterLevels] = useState({
     Sensor1: 5,
@@ -38,7 +45,7 @@ const ControlPanel = () => {
   }, []);
 
   useEffect(() => {
-    if (useDummyData) {
+    if (true) {
       const dummyInterval = setInterval(() => {
         const base = Math.floor(Math.random() * 6) + 3;
         const variation = Math.floor(Math.random() * 3) - 1;
@@ -55,7 +62,7 @@ const ControlPanel = () => {
       }, 1000);
       return () => clearInterval(dummyInterval);
     }
-  }, [useDummyData]);
+  }, []);
 
   const addLog = (message) => {
     const now = new Date();
@@ -64,14 +71,10 @@ const ControlPanel = () => {
   };
 
   const toggleTheme = () => {
-    setIsDarkMode(!isDarkMode);
-    if (isDarkMode) {
-      document.body.classList.add('light-mode');
-      document.body.classList.remove('dark-mode');
-    } else {
-      document.body.classList.add('dark-mode');
-      document.body.classList.remove('light-mode');
-    }
+    setIsDarkMode((prev) => {
+      localStorage.setItem('theme', !prev ? 'dark' : 'light');
+      return !prev;
+    });
   };
 
   const handleDeurActie = (deurNummer, actie) => {

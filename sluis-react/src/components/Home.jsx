@@ -3,22 +3,27 @@ import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
   const navigate = useNavigate();
-  const [isDarkMode, setIsDarkMode] = useState(true);
+  const getInitialTheme = () => {
+    const stored = localStorage.getItem('theme');
+    return stored ? stored === 'dark' : true;
+  };
+  const [isDarkMode, setIsDarkMode] = useState(getInitialTheme);
 
   useEffect(() => {
-    document.body.classList.add('dark-mode');
-    document.body.classList.remove('light-mode');
-  }, []);
-
-  const toggleTheme = () => {
-    setIsDarkMode(!isDarkMode);
     if (isDarkMode) {
-      document.body.classList.add('light-mode');
-      document.body.classList.remove('dark-mode');
-    } else {
       document.body.classList.add('dark-mode');
       document.body.classList.remove('light-mode');
+    } else {
+      document.body.classList.add('light-mode');
+      document.body.classList.remove('dark-mode');
     }
+  }, [isDarkMode]);
+
+  const toggleTheme = () => {
+    setIsDarkMode((prev) => {
+      localStorage.setItem('theme', !prev ? 'dark' : 'light');
+      return !prev;
+    });
   };
 
   return (
