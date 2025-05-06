@@ -1,13 +1,13 @@
 /* Algemene stijlen */
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
   text-align: center;
-  background-color: #1e1e1e;
-  color: #f0f0f0;
   margin: 0;
   padding: 0;
   display: flex;
@@ -15,57 +15,202 @@ body {
   align-items: center;
   min-height: 100vh;
   flex-direction: column;
+  transition: all 0.3s ease;
+  background-color: #1a1a1a;
+  color: #ffffff;
 }
 
-/* Titel sectie */
-.title {
-  background-color: #121212;
-  color: #d4d4d4;
-  padding: 20px;
-  box-shadow: 0px 4px 8px rgba(255, 255, 255, 0.1);
-  width: 100%;
+body.dark-mode {
+  background-color: #1a1a1a;
+  color: #ffffff;
 }
 
-.title h1 {
-  margin: 0;
-  font-size: 2em;
+body.light-mode {
+  background-color: #f5f5f5;
+  color: #2d2d2d;
 }
 
-.title h3 {
-  margin: 5px 0 0;
-  font-weight: normal;
-  font-size: 1.2em;
+/* Theme toggle button */
+.theme-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 12px 24px;
+  background: transparent;
+  border: 2px solid;
+  border-radius: 30px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1000;
+  backdrop-filter: blur(8px);
 }
 
-/* Scherm sectie */
+.dark-mode .theme-toggle {
+  border-color: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.light-mode .theme-toggle {
+  border-color: rgba(45, 45, 45, 0.2);
+  color: #2d2d2d;
+  background: rgba(45, 45, 45, 0.1);
+}
+
+.theme-toggle:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.dark-mode .theme-toggle:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.light-mode .theme-toggle:hover {
+  background: rgba(45, 45, 45, 0.15);
+  border-color: rgba(45, 45, 45, 0.3);
+}
+
+/* Dark mode styles */
+.dark-mode .screen {
+  background-color: #2d2d2d;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  border-radius: 16px;
+  backdrop-filter: blur(8px);
+}
+
+.dark-mode .screen h1 {
+  color: #ffffff;
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+.dark-mode .sector {
+  background-color: #363636;
+  color: #ffffff;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  transition: transform 0.3s ease;
+}
+
+.dark-mode .sector:hover {
+  transform: translateY(-2px);
+}
+
+.dark-mode .water-text {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.dark-mode .sluisdeur {
+  background-color: #ffffff;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  border-radius: 6px;
+}
+
+.dark-mode .logs-container {
+  background-color: #2d2d2d;
+  border: 1px solid #404040;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  border-radius: 16px;
+}
+
+.dark-mode .logs-container h2 {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.dark-mode .logs {
+  background-color: #1a1a1a;
+  border: 1px solid #404040;
+  color: #e0e0e0;
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+}
+
+/* Light mode styles */
+.light-mode .screen {
+  background-color: #ffffff;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
+  backdrop-filter: blur(8px);
+}
+
+.light-mode .screen h1 {
+  color: #2d2d2d;
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+.light-mode .sector {
+  background-color: #f0f0f0;
+  color: #2d2d2d;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  transition: transform 0.3s ease;
+}
+
+.light-mode .sector:hover {
+  transform: translateY(-2px);
+}
+
+.light-mode .water-text {
+  color: #2d2d2d;
+  font-weight: 600;
+}
+
+.light-mode .sluisdeur {
+  background-color: #2d2d2d;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  border-radius: 6px;
+}
+
+.light-mode .logs-container {
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
+}
+
+.light-mode .logs-container h2 {
+  color: #2d2d2d;
+  font-weight: 600;
+}
+
+.light-mode .logs {
+  background-color: #f8f8f8;
+  border: 1px solid #e0e0e0;
+  color: #2d2d2d;
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.05);
+  border-radius: 12px;
+}
+
+/* Common styles */
 .screen {
-  background-color: #2a2a2a;
-  box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.1);
-  border-radius: 10px;
   width: 100%;
   max-width: 1200px;
   margin: 20px auto;
-  padding: 20px;
+  padding: 2rem;
+  transition: all 0.3s ease;
 }
 
-/* Tijdweergave */
-.screen h1 {
-  font-size: 2.5em;
-  margin-bottom: 20px;
-  color: #d4d4d4;
-}
-
-/* Container voor de sectoren en sluisdeuren */
 .sluis-container {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 1.5rem;
   width: 100%;
 }
 
-/* Sectoren */
 .sector {
   flex: 1;
   min-width: 120px;
@@ -73,18 +218,12 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 1.2em;
-  color: #d4d4d4;
-  border-radius: 5px;
-  background-color: #3c3c3c;
-  font-weight: bold;
-  box-shadow: 0px 4px 6px rgba(255, 255, 255, 0.05);
+  font-size: 1.2rem;
   position: relative;
   overflow: hidden;
-  margin-bottom: 10px;
+  margin-bottom: 1rem;
 }
 
-/* Water niveau (water-level) */
 .water-level {
   width: 100%;
   background-color: #0077cc;
@@ -94,6 +233,7 @@ body {
   border-radius: 0;
   height: 0;
   overflow: hidden;
+  transition: height 0.5s ease;
 }
 
 .water-level::after {
@@ -114,149 +254,242 @@ body {
   filter: blur(2px);
 }
 
-/* Water stand tekst */
-.water-text {
-  position: absolute;
-  top: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 1.2em;
-  font-weight: bold;
-  color: #d4d4d4;
-  z-index: 2;
-}
-
-/* Sluis met deur en knoppen */
 .sluis {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 5px;
+  gap: 0.5rem;
 }
 
-/* Sluisdeuren */
 .sluisdeur {
   width: 20px;
   height: 100px;
-  background-color: #d4d4d4;
-  border-radius: 3px;
-  box-shadow: 0px 4px 6px rgba(255, 255, 255, 0.1);
-  transition: opacity 0.5s ease;
+  border-radius: 6px;
+  transition: all 0.3s ease;
 }
 
-.opened {
-  opacity: 0.5;
-}
-
-.closed {
-  opacity: 1;
-}
-
-/* Knoppen onder de sluisdeuren */
 .knoppen {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 5px;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
 }
 
+/* Common button styles */
 button {
-  width: 90px;
-  padding: 8px;
-  margin: 4px;
+  width: 100px;
+  padding: 0.8rem;
   border: none;
-  border-radius: 5px;
+  border-radius: 12px;
   cursor: pointer;
-  font-size: 0.9em;
-  font-weight: bold;
-  transition: 0.3s;
-  box-shadow: 0px 3px 6px rgba(255, 255, 255, 0.05);
-  color: #d4d4d4;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
 }
 
-.levelen {
-  background-color: #777;
+button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+button:hover::before {
+  opacity: 1;
 }
 
 .openen {
-  background-color: #28a745;
+  background: linear-gradient(135deg, #28a745, #20c997);
+  color: white;
+  box-shadow: 0 4px 15px rgba(40, 167, 69, 0.2);
 }
 
 .sluiten {
-  background-color: #dc3545;
+  background: linear-gradient(135deg, #dc3545, #c82333);
+  color: white;
+  box-shadow: 0 4px 15px rgba(220, 53, 69, 0.2);
 }
 
 button:hover {
-  opacity: 0.85;
   transform: translateY(-2px);
-  box-shadow: 0px 5px 8px rgba(255, 255, 255, 0.1);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
 }
 
-/* Stoplicht container */
+button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+button:disabled::before {
+  display: none;
+}
+
+/* Dark mode specific button styles */
+.dark-mode button {
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.dark-mode .openen {
+  background: linear-gradient(135deg, #28a745, #20c997);
+  box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
+}
+
+.dark-mode .sluiten {
+  background: linear-gradient(135deg, #dc3545, #c82333);
+  box-shadow: 0 4px 15px rgba(220, 53, 69, 0.3);
+}
+
+/* Light mode specific button styles */
+.light-mode button {
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.light-mode .openen {
+  background: linear-gradient(135deg, #28a745, #20c997);
+  box-shadow: 0 4px 15px rgba(40, 167, 69, 0.2);
+}
+
+.light-mode .sluiten {
+  background: linear-gradient(135deg, #dc3545, #c82333);
+  box-shadow: 0 4px 15px rgba(220, 53, 69, 0.2);
+}
+
 .stoplicht {
   display: flex;
   justify-content: center;
-  gap: 10px;
-  margin-bottom: 5px;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  backdrop-filter: blur(8px);
 }
 
-/* Stoplicht cirkels */
+.dark-mode .stoplicht {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.light-mode .stoplicht {
+  background: rgba(0, 0, 0, 0.05);
+}
+
 .licht {
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
-  box-shadow: 0px 2px 5px rgba(255, 255, 255, 0.1);
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  opacity: 0.3;
+}
+
+.licht::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70%;
+  height: 70%;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  filter: blur(2px);
 }
 
 .rood {
-  background-color: red;
+  background: linear-gradient(135deg, #ff4444, #cc0000);
+}
+
+.rood.actief {
+  opacity: 1;
+  box-shadow: 0 0 20px rgba(255, 68, 68, 0.6);
+  animation: pulseRed 2s infinite;
 }
 
 .groen {
-  background-color: green;
+  background: linear-gradient(135deg, #00c851, #007e33);
 }
 
-/* Logs container */
+.groen.actief {
+  opacity: 1;
+  box-shadow: 0 0 20px rgba(0, 200, 81, 0.6);
+  animation: pulseGreen 2s infinite;
+}
+
+@keyframes pulseRed {
+  0% {
+    box-shadow: 0 0 20px rgba(255, 68, 68, 0.6);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(255, 68, 68, 0.8);
+  }
+  100% {
+    box-shadow: 0 0 20px rgba(255, 68, 68, 0.6);
+  }
+}
+
+@keyframes pulseGreen {
+  0% {
+    box-shadow: 0 0 20px rgba(0, 200, 81, 0.6);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(0, 200, 81, 0.8);
+  }
+  100% {
+    box-shadow: 0 0 20px rgba(0, 200, 81, 0.6);
+  }
+}
+
 .logs-container {
   width: 100%;
   max-width: 1200px;
-  margin: 20px auto;
-  background-color: #2a2a2a;
-  border: 1px solid #444;
-  padding: 15px;
-  border-radius: 10px;
-  box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.05);
+  margin: 2rem auto;
+  padding: 1.5rem;
 }
 
 .logs-container h2 {
-  font-size: 1.8em;
-  color: #d4d4d4;
-  margin-bottom: 15px;
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
 }
 
-/* Logs styling */
 .logs {
   height: 400px;
-  background-color: #1e1e1e;
-  border: 1px solid #333;
-  border-radius: 8px;
-  padding: 10px;
-  font-family: monospace;
-  color: #dcdcdc;
+  padding: 1rem;
+  font-family: 'Consolas', monospace;
   overflow-y: auto;
   white-space: pre-wrap;
-  box-shadow: 0px 2px 6px rgba(255, 255, 255, 0.05);
+  line-height: 1.5;
 }
 
 .logs p {
-  margin: 5px 0;
-  font-size: 1em;
+  margin: 0.5rem 0;
+  font-size: 0.9rem;
 }
 
 /* Responsive aanpassingen */
 @media screen and (max-width: 768px) {
   .screen {
     width: 90%;
+    padding: 1rem;
   }
 
   .logs-container {
@@ -278,6 +511,13 @@ button:hover {
   }
 
   .water-text {
-    font-size: 1em;
+    font-size: 1rem;
+  }
+
+  .theme-toggle {
+    top: 10px;
+    right: 10px;
+    padding: 8px 16px;
+    font-size: 0.8rem;
   }
 }

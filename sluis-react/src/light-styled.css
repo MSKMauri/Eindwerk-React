@@ -1,0 +1,303 @@
+/* Algemene stijlen */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  background-color: #f0f0f0;
+  color: #1e1e1e;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+/* Titel sectie */
+.title {
+  background-color: #ffffff;
+  color: #333333;
+  padding: 20px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+}
+
+.title h1 {
+  margin: 0;
+  font-size: 2em;
+}
+
+.title h3 {
+  margin: 5px 0 0;
+  font-weight: normal;
+  font-size: 1.2em;
+}
+
+/* Scherm sectie */
+.screen {
+  background-color: #ffffff;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 20px;
+}
+
+/* Tijdweergave */
+.screen h1 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+  color: #333333;
+}
+
+/* Container voor de sectoren en sluisdeuren */
+.sluis-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 10px;
+  width: 100%;
+}
+
+/* Sectoren */
+.sector {
+  flex: 1;
+  min-width: 120px;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2em;
+  color: #333333;
+  border-radius: 5px;
+  background-color: #e0e0e0;
+  font-weight: bold;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.05);
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+/* Water niveau (water-level) */
+.water-level {
+  width: 100%;
+  background-color: #0077cc;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  border-radius: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+.water-level::after {
+  content: "";
+  position: absolute;
+  top: -5px;
+  left: 0;
+  width: 100%;
+  height: 15px;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0.4) 20%,
+    rgba(0, 119, 204, 1) 50%,
+    rgba(255, 255, 255, 0.4) 80%
+  );
+  opacity: 0.4;
+  border-radius: 50%;
+  filter: blur(2px);
+}
+
+/* Water stand tekst */
+.water-text {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #333333;
+  z-index: 2;
+}
+
+/* Sluis met deur en knoppen */
+.sluis {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+/* Sluisdeuren */
+.sluisdeur {
+  width: 20px;
+  height: 100px;
+  background-color: #666666;
+  border-radius: 3px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  transition: opacity 0.5s ease;
+}
+
+.opened {
+  opacity: 0.5;
+}
+
+.closed {
+  opacity: 1;
+}
+
+/* Knoppen onder de sluisdeuren */
+.knoppen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 5px;
+}
+
+button {
+  width: 90px;
+  padding: 8px;
+  margin: 4px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.9em;
+  font-weight: bold;
+  transition: 0.3s;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+  color: #ffffff;
+}
+
+.levelen {
+  background-color: #777;
+}
+
+.openen {
+  background-color: #28a745;
+}
+
+.sluiten {
+  background-color: #dc3545;
+}
+
+button:hover {
+  opacity: 0.85;
+  transform: translateY(-2px);
+  box-shadow: 0px 5px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Stoplicht container */
+.stoplicht {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 5px;
+}
+
+/* Stoplicht cirkels */
+.licht {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.rood {
+  background-color: red;
+}
+
+.groen {
+  background-color: green;
+}
+
+/* Logs container */
+.logs-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 20px auto;
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.logs-container h2 {
+  font-size: 1.8em;
+  color: #333333;
+  margin-bottom: 15px;
+}
+
+/* Logs styling */
+.logs {
+  height: 400px;
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px;
+  font-family: monospace;
+  color: #333333;
+  overflow-y: auto;
+  white-space: pre-wrap;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.logs p {
+  margin: 5px 0;
+  font-size: 1em;
+}
+
+/* Theme toggle button */
+.theme-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 10px 20px;
+  background-color: #0077cc;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+}
+
+.theme-toggle:hover {
+  background-color: #005fa3;
+}
+
+/* Responsive aanpassingen */
+@media screen and (max-width: 768px) {
+  .screen {
+    width: 90%;
+  }
+
+  .logs-container {
+    width: 90%;
+  }
+
+  .logs {
+    height: 150px;
+  }
+
+  .sluis-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .sector {
+    width: 120px;
+    height: 120px;
+  }
+
+  .water-text {
+    font-size: 1em;
+  }
+} 
