@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import logo from '../assets/logo.svg';
 
 const Home = () => {
   const navigate = useNavigate();
@@ -34,6 +35,7 @@ const Home = () => {
         </button>
       </div>
       <div className="home-content">
+        <img src={logo} alt="Sluis Logo" className="home-logo" />
         <h1>Sluis Controle Systeem</h1>
         <p className="subtitle">Beheer en monitor uw sluis operaties</p>
         

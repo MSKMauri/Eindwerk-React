@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import WaterSector from './WaterSector';
 import SluisDeur from './SluisDeur';
 import Stoplichten from './Stoplichten';
+import logo from '../assets/logo.svg';
 
 // Simpele boolean om te wisselen tussen WebSocket en dummy data
 const USE_WEBSOCKET = true; // Zet op true voor WebSocket data, false voor dummy data
@@ -12,6 +13,7 @@ const ControlPanel = () => {
   const ws = useRef(null);
   const [useWebSocket, setUseWebSocket] = useState(false);
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
+  const [isLogsVisible, setIsLogsVisible] = useState(true);
   const settingsRef = useRef(null);
   
   const getInitialTheme = () => {
@@ -160,9 +162,12 @@ const ControlPanel = () => {
   return (
     <div className={isDarkMode ? 'dark-mode' : 'light-mode'}>
       <div className="control-header">
-        <button className="back-button" onClick={() => navigate('/')}>
-          ← Terug naar Home
-        </button>
+        <div className="header-left">
+          <img src={logo} alt="Sluis Logo" className="header-logo" />
+          <button className="back-button" onClick={() => navigate('/')}>
+            ← Terug naar Home
+          </button>
+        </div>
         <button className="theme-toggle" onClick={toggleTheme}>
           {isDarkMode ? '☀️ Licht' : '🌙 Donker'}
         </button>
@@ -230,8 +235,16 @@ const ControlPanel = () => {
       </div>
 
       <div className="logs-container">
-        <h2>Sluis Logs</h2>
-        <div className="logs">
+        <div className="logs-header">
+          <h2>Sluis Logs</h2>
+          <button 
+            className="toggle-logs" 
+            onClick={() => setIsLogsVisible(!isLogsVisible)}
+          >
+            {isLogsVisible ? '▼' : '▲'}
+          </button>
+        </div>
+        <div className={`logs ${isLogsVisible ? 'visible' : 'hidden'}`}>
           {logs.map((log, idx) => (
             <p key={idx}>{log}</p>
           ))}
